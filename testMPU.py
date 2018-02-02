@@ -40,13 +40,13 @@ while count < 10000:
         print('count: ' + str(count) + ' overflow: ' + str(overflow))
     else:
         no_overflow += 1
-        FIFO_buffer = mpu.get_FIFO_bytes(FIFO_buffer, packet_size)
+        FIFO_buffer = mpu.get_FIFO_bytes(packet_size)
         # print(FIFO_buffer)
         accel = mpu.DMP_get_acceleration_int16(FIFO_buffer)
         # print(str(accel.x) + " " + str(accel.y) + " " + str(accel.z))
         if (accel.x > 12000) or (accel.x < -12000) or (accel.y > 12000) or \
                 (accel.y < -12000) or (accel.z > 12000) or (accel.z < -12000):
-            crazy_high += 1
+            crazy_high_number += 1
 
 end_time = clock()
 delta_time = end_time - start_time
